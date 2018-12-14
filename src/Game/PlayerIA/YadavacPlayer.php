@@ -37,13 +37,13 @@ class YadavacPlayer extends Player
             && ($this->result->getChoicesFor($this->opponentSide)[$nbRound - 1] == $foeChoice))
             return $foeChoice;
 
-        //Opponent always plays friend -> I play "Foe" to gain the points
+        //Opponent always plays friend -> I play "Friend" to gain the points
         if (($this->result->getChoicesFor($this->opponentSide)[$nbRound - 3] == $friendChoice)
             && ($this->result->getChoicesFor($this->opponentSide)[$nbRound - 2] == $friendChoice)
             && ($this->result->getChoicesFor($this->opponentSide)[$nbRound - 1] == $friendChoice))
-            return $foeChoice;
+            return $friendChoice;
 
-        //Opponent altern Foe and Friend -> I counter it with "Foe" to deny and gain some points
+        //Opponent alternate Foe and Friend -> I counter it with "Foe" to deny and gain some points
         if (    (($this->result->getChoicesFor($this->opponentSide)[$nbRound - 2] == $friendChoice)
                 && ($this->result->getChoicesFor($this->opponentSide)[$nbRound - 1] == $foeChoice))
             ||  (($this->result->getChoicesFor($this->opponentSide)[$nbRound - 2] == $foeChoice)
