@@ -22,8 +22,8 @@ class YadavacPlayer extends Player
         $foeChoice = parent::foeChoice();
         $friendChoice = parent::friendChoice();
 
-        //The 1st round I play "Friend"
-        if ($nbRound == 0) {
+        //The first 3 rounds I play "Friend" (to lure them)
+        if ($nbRound < 3) {
             return $friendChoice;
         }
 
@@ -42,7 +42,15 @@ class YadavacPlayer extends Player
             && ($this->result->getChoicesFor($this->opponentSide)[$nbRound - 1] == $friendChoice))
             return $foeChoice;
 
-        //Opponent plays the same as my previous choice -> I do the same
+        //Opponent altern Foe and Friend -> I counter it with "Foe" to deny and gain some points
+        if (    (($this->result->getChoicesFor($this->opponentSide)[$nbRound - 2] == $friendChoice)
+                && ($this->result->getChoicesFor($this->opponentSide)[$nbRound - 1] == $foeChoice))
+            ||  (($this->result->getChoicesFor($this->opponentSide)[$nbRound - 2] == $foeChoice)
+                && ($this->result->getChoicesFor($this->opponentSide)[$nbRound - 1] == $friendChoice))
+            )
+            return $foeChoice;
+
+        //Opponent plays the same as my previous choice -> I do the same with him
         if (($this->result->getChoicesFor($this->opponentSide)[$nbRound - 2] == $this->result->getChoicesFor($this->mySide)[$nbRound - 3])
             && ($this->result->getChoicesFor($this->opponentSide)[$nbRound - 1] == $this->result->getChoicesFor($this->mySide)[$nbRound - 2]))
             return $this->result->getChoicesFor($this->opponentSide)[$nbRound - 1];
