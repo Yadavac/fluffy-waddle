@@ -22,14 +22,9 @@ class YadavacPlayer extends Player
         $foeChoice = parent::foeChoice();
         $friendChoice = parent::friendChoice();
 
-        //The 1st round I play "Foe"
+        //The 1st round I play "Friend"
         if ($nbRound == 0) {
-            return $foeChoice;
-        }
-        else if ($nbRound < 3) {
-            if ($this->result->getLastChoiceFor($this->opponentSide) == $foeChoice)
-                return $friendChoice;
-            return $foeChoice;
+            return $friendChoice;
         }
 
         //Here I try to recognize what strategy my opponent is playing, and i counter-play accordingly.
