@@ -87,8 +87,8 @@ abstract class Player
         $myStat= $this->result->getStatsFor($this->mySide);
         $oppoStat= $this->result->getStatsFor(($this->opponentSide));
 
-        echo "(", $this->result->getNbRound(), ") Last round ", $myStat['name'], " plays ", $this->result->getLastChoiceFor($this->mySide), " \t ",
+        /*echo "(", $this->result->getNbRound(), ") Last round ", $myStat['name'], " plays ", $this->result->getLastChoiceFor($this->mySide), " \t ",
                                                                 $oppoStat['name'], " plays ", $this->result->getLastChoiceFor($this->opponentSide), PHP_EOL, "\t",
-            $myStat['name'], " :  ", $this->result->getLastScoreFor($this->mySide), " \t ", $oppoStat['name'], " : ", $this->result->getLastScoreFor($this->opponentSide), PHP_EOL;
+            $myStat['name'], " :  ", $this->result->getLastScoreFor($this->mySide), " \t ", $oppoStat['name'], " : ", $this->result->getLastScoreFor($this->opponentSide), PHP_EOL;*/
     }
 };

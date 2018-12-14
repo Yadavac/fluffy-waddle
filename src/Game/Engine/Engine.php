@@ -50,10 +50,10 @@ class Engine
         $scoreA = $matrix[$choiceA][$choiceB]['a'];
         $scoreB = $matrix[$choiceA][$choiceB]['b'];
 
-        if ($this->consoleOutput) {
+        /*if ($this->consoleOutput) {
             echo $playerA->getName(), " plays ", $choiceA, " \t ", $playerB->getName(), " plays ", $choiceB, PHP_EOL, "\t",
                 "Score A : $scoreA \t Score B : $scoreB", PHP_EOL;
-        }
+        }*/
 
         return array('a' => array('choice' => $choiceA,
                                   'score' => $scoreA),
