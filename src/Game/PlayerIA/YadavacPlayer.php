@@ -18,6 +18,7 @@ class YadavacPlayer extends Player
 
     public function getChoice()
     {
+        //Store the variables to limit the number of calls (and optimize execution time)
         $nbRound = $this->result->getNbRound();
         $foeChoice = parent::foeChoice();
         $friendChoice = parent::friendChoice();
