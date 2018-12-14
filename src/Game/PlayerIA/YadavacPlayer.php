@@ -3,6 +3,7 @@
 namespace Hackathon\PlayerIA;
 
 use Hackathon\Game\Result;
+use SebastianBergmann\Environment\Console;
 
 /**
  * Class LovePlayer
@@ -40,8 +41,13 @@ class YadavacPlayer extends Player
         // -------------------------------------    -----------------------------------------------------
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
- 
-        return parent::friendChoice();
+
+        if ($this->result->getNbRound() == 0) {
+            return parent::foeChoice();
+        }
+        if ($this->result->getLastChoiceFor($this->opponentSide) == parent::foeChoice())
+            return parent::friendChoice();
+        return parent::foeChoice();
     }
  
 };
