@@ -18,7 +18,6 @@ class FalseFriendPlayer extends Player
 
     public function getChoice()
     {
-        $this->prettyDisplay();
         $nbRound = $this->result->getNbRound();
         $foeChoice = parent::foeChoice();
         $friendChoice = parent::friendChoice();
