@@ -1,21 +1,16 @@
 <?php
-
 namespace Hackathon\PlayerIA;
-
 use Hackathon\Game\Result;
-use SebastianBergmann\Environment\Console;
-
 /**
  * Class LovePlayer
  * @package Hackathon\PlayerIA
- * @author yverne_v
+ * @author PaulB
  */
-class SamePlayer extends Player
+class InvertedMemoryPlayer extends Player
 {
     protected $mySide;
     protected $opponentSide;
     protected $result;
-
     public function getChoice()
     {
         // -------------------------------------    -----------------------------------------------------
@@ -42,12 +37,14 @@ class SamePlayer extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
 
-        if ($this->result->getNbRound() == 0) {
-            return parent::friendChoice();
+        $nbRound = $this->result->getNbRound();
+        if ($nbRound != 0)
+        {
+            $friendPercent = $this->result->getStatsFor($this->opponentSide)['friend'] / $nbRound;
+            if ($friendPercent > 0.5)
+                return parent::friendChoice();
         }
-        if ($this->result->getLastChoiceFor($this->opponentSide) == parent::friendChoice())
-            return parent::friendChoice();
         return parent::foeChoice();
     }
- 
+
 };
